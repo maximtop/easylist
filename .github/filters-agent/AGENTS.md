@@ -88,16 +88,13 @@ and records that the user-filter state itself was credited from the file's conte
 
 ## Placement
 
-A site-specific element-hiding rule belongs in `easylist/easylist_specific_hide.txt`, as the
-contributing guide says; the host takes the file from this one declaration and proposes exactly
-that:
-
-placement: easylist/easylist_specific_hide.txt
-
-The guide also keeps every file in ASCII order, which the maintainers restore with the `fop`
-script; the proposed line is appended at the end of the file and sorted into place on review. The
-user-filters file named under State verification is the in-browser application path only; it
-never receives the proposed rule.
+Nothing is declared here on purpose: the run reads the checkout and finds the file and the line
+itself. EasyList files rules by kind — site-specific hiding in
+`easylist/easylist_specific_hide.txt`, site-specific blocking in
+`easylist/easylist_specific_block.txt`, ad servers in `easylist/easylist_adservers.txt` — and keeps
+every list in ASCII order with `fop`, so the run picks the list holding rules of the candidate's
+shape and proposes the rule at its sorted position there. The user-filters file named under State
+verification is the in-browser application path only; it never receives the proposed rule.
 
 ## Issue selection
 
@@ -130,6 +127,10 @@ than the list.
 
 {{candidateForReview}}
 
+### Still visible after the rule
+
+{{stillVisible}}
+
 ### Executor and version
 
 {{executor}} {{executorVersion}}
@@ -145,9 +146,9 @@ EasyList as the only list.
 
 {{listPlace}}
 
-Proposed placement: `easylist/easylist_specific_hide.txt`, appended at the end; sort it into ASCII
-order with `fop` before committing. The user-filters file the run verified against is the
-in-browser application path only.
+The file above is the list the run found for this kind of rule, and the proposed line is its
+sorted position there. The user-filters file the run verified against is the in-browser
+application path only.
 
 ### Missing information
 
